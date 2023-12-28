@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using xadrez;
+using System.Linq;
 using xadrez_console.tabuleiro;
 using xadrez_console.xadrez;
 using tabuleiro;
@@ -13,15 +13,21 @@ namespace xadrez_console
         {
             try
             {
-                PosicaoXadrez pos = new PosicaoXadrez('c', 7);
+                Tabuleiro tab = new Tabuleiro(8, 8);
 
-                Console.WriteLine(pos);
-                Console.WriteLine(pos.toPosicao());
+                tab.ColocarPeca(new Torre(tab, Cor.Preta), new Posicao(0, 0));
+                tab.ColocarPeca(new Torre(tab, Cor.Preta), new Posicao(1, 4));
+                tab.ColocarPeca(new Rei(tab, Cor.Preta), new Posicao(3, 4));
+
+                tab.ColocarPeca(new Torre(tab, Cor.Branca), new Posicao(3, 5));
+
+                Tela.ImprimirTabuleiro(tab);
+
                 Console.ReadLine();
             }
             catch(TabuleiroException e)
             {
-              
+                Console.WriteLine(e.Message);
             }
 
 
